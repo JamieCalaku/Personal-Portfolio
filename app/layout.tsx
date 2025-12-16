@@ -1,6 +1,7 @@
 import {Metadata} from "next";
 import "./globals.css";
 import SEOJsonLd from "@/components/seo/SEOJsonLd";
+import SmoothScroll from "@/components/scroll/SmoothScroll";
 
 const title = "Jamie Calaku | Fullstack Engineer";
 const description = "I’m a young full-stack developer from Darmstadt, Germany. I learn best by building, failing, fixing, and repeating the process. I’m curious about how things work under the hood and I enjoy turning vague ideas into real projects that I can actually be proud of.";
@@ -81,18 +82,19 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+      <html lang="en" translate={"no"}>
+        <SmoothScroll>
+          <body
+            className={`antialiased`}
+          >
 
-      <body
-        className={`antialiased`}
-      >
+            {children}
 
-        {children}
+            {/* SEOJsonLd */}
+            <SEOJsonLd/>
 
-        {/* SEOJsonLd */}
-        <SEOJsonLd/>
-
-      </body>
+          </body>
+        </SmoothScroll>
     </html>
   );
 }
