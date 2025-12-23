@@ -1,5 +1,51 @@
 @import "tailwindcss";
 
 :root {
+    /* App */
+    --app-bg: 0 0 0;
 
+    /* Navbar */
+    --navbar-stroke: 55 55 55;
+    --status-green: 34 197 94;
+}
+
+@theme {
+    /* App */
+    --color-bg: rgb(var(--app-bg) / 1);
+
+    /* Navbar */
+    --color-navbar-stroke: rgb(var(--navbar-stroke) / 1);
+    --shadow-navbar-glow: 0 0 22px rgba(131, 131, 131, 0.2);
+    --animate-status: status-ripple 3s infinite ease-out;
+}
+
+@keyframes status-ripple {
+    0% { opacity: 0.55; transform: scale(1); }
+    100% { opacity: 0; transform: scale(2.4); }
+}
+
+@layer components {
+    .status-dot {
+        @apply relative w-4 aspect-square rounded-full;
+        background: rgb(var(--status-green));
+    }
+
+    .status-dot::before,
+    .status-dot::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        border-radius: inherit;
+        border: 2px solid rgb(var(--status-green) / 0.65);
+        animation: var(--animate-status);
+    }
+
+    .status-dot::before { animation-delay: -1.15s; }
+    .status-dot::after  { animation-delay: -2.3s; }
+}
+
+@layer base {
+    body {
+        @apply bg-bg;
+    }
 }
