@@ -1,5 +1,16 @@
 @import "tailwindcss";
 
+html, body {
+    overscroll-behavior: none;
+    overscroll-behavior-y: none;
+    -webkit-scrollbar { width: 0; height: 0; }
+    -webkit-tap-highlight-color: transparent;
+    -webkit-text-size-adjust: 100%;
+    scrollbar-width: none;
+}
+
+
+
 :root {
     /* App */
     --app-bg: 0 0 0;
@@ -25,6 +36,13 @@
 }
 
 @layer components {
+    .no-select {
+        user-select: none;
+        -webkit-user-select: none;
+        -ms-user-select: none;
+    }
+
+
     .status-dot {
         @apply relative w-4 aspect-square rounded-full;
         background: rgb(var(--status-green));

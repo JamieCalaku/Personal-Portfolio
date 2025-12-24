@@ -4,21 +4,25 @@ import Navbar_Signature from "@/components/sub/Navbar_Signature";
 
 export default function Header() {
     return (
-        <div className="flex w-screen h-30 px-10 items-center flex-col gap-4 min-[990px]:flex-row min-[990px]:justify-between min-[990px]:gap-0">
-            {/* Signature */}
-            <div className="order-2 min-[990px]:order-1 flex max-[990px]:hidden min-[990px]:pl-6">
-                <Navbar_Signature />
-            </div>
+        <header className="w-screen">
+            <div className="grid grid-cols-3 items-center h-30">
 
-            {/* Navbar */}
-            <div className="order-1 min-[990px]:order-2 flex">
-                <Navbar />
-            </div>
+                {/* Signature */}
+                <div className="justify-self-start">
+                    <Navbar_Signature/>
+                </div>
 
-            {/* Available */}
-            <div className="order-3 min-[990px]:order-3 flex min-[990px]:pr-6">
-                <Navbar_Available />
+                {/* Navbar */}
+                <div className="justify-self-center">
+                    <Navbar/>
+                </div>
+
+                {/* Available */}
+                <div className="justify-self-end">
+                    <Navbar_Available/>
+                </div>
+
             </div>
-        </div>
+        </header>
     );
 }

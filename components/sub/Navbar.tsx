@@ -9,7 +9,7 @@ const LINKS: NavLink[] = [
     { label: "About", id: "about" },
     { label: "Skills", id: "skills" },
     { label: "Projects", id: "projects" },
-    { label: "Contact", id: "Contact" },
+    { label: "Contact", id: "contact" },
 ];
 
 const OBSERVER_OPTIONS: IntersectionObserverInit = {
@@ -42,8 +42,8 @@ export default function Navbar() {
     }, []);
 
     return (
-        <nav className="w-[600px] max-[1300px]:w-[520px] max-[1150px]:w-[420px] h-16 bg-neutral-900 rounded-[100px] shadow-navbar-glow outline-1 outline-navbar-stroke inline-flex items-center px-3 overflow-hidden">
-            <div className="flex items-center justify-between w-full px-2 max-[1150px]:px-0">
+        <nav className="inline-flex h-16 px-1 overflow-hidden bg-neutral-900 rounded-[100px] shadow-navbar-glow outline-1 outline-navbar-stroke no-select">
+            <div className="flex">
                 {LINKS.map(({ id, label }) => (
                     <NavItem
                         key={id}
@@ -73,11 +73,11 @@ function NavItem({ id, label, active, onClick }: NavItemProps) {
                 e.preventDefault();
                 onClick(id);
             }}
-            className="relative flex items-center justify-center h-14 text-base max-[1300px]:text-sm max-[1150px]:text-xs font-bold text-white"
+            className="flex items-center font-bold text-white"
         >
-      <span className="relative inline-flex items-center justify-center w-28 max-[1300px]:w-24 max-[1150px]:w-20 h-14">
+      <span className="relative inline-flex items-center justify-center w-28 h-14">
         {active && <ActivePill />}
-          <span className="relative z-10">{label}</span>
+          <span className="z-10">{label}</span>
       </span>
         </a>
     );
