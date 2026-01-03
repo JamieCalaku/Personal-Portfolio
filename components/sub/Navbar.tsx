@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 
 type NavLink = { label: string; id: string };
 
@@ -27,11 +28,13 @@ export default function Navbar() {
         });
 
     useEffect(() => {
-        const observer = new IntersectionObserver(
-            (entries) =>
-                entries.forEach((e) => e.isIntersecting && setActiveId(e.target.id)),
-            OBSERVER_OPTIONS
-        );
+        const observer = new IntersectionObserver((entries) => {
+            const visible = entries.filter(e => e.isIntersecting);
+            if (!visible.length) return;
+
+            visible.sort((a, b) => (b.intersectionRatio ?? 0) - (a.intersectionRatio ?? 0));
+            setActiveId(visible[0].target.id);
+        }, OBSERVER_OPTIONS);
 
         LINKS.forEach((l) => {
             const el = document.getElementById(l.id);
@@ -73,18 +76,18 @@ function NavItem({ id, label, active, onClick }: NavItemProps) {
                 e.preventDefault();
                 onClick(id);
             }}
-            className="flex items-center font-bold text-white"
+            className="flex items-center font-bold text-white text-[clamp(0.5rem,1.1rem,2rem)]"
         >
-      <span className="relative inline-flex items-center justify-center w-28 h-14">
-        {active && <ActivePill />}
+      <span className="relative inline-flex items-center justify-center px-[clamp(0.8rem,1.6vw,10rem)] h-14">
+        {active && (
+            <motion.span
+                layoutId="active-pill"
+                className="absolute inset-0 bg-stone-950 rounded-[100px]"
+                transition={{ type: "spring", stiffness: 500, damping: 100 }}
+            />
+        )}
           <span className="z-10">{label}</span>
       </span>
         </a>
-    );
-}
-
-function ActivePill() {
-    return (
-        <span className="absolute inset-0 bg-stone-950 rounded-[100px] transition-transform duration-300" />
     );
 }

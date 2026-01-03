@@ -1,6 +1,5 @@
 import Header from "@/components/main/Header";
 import Hero from "@/components/main/Hero";
-import About from "@/components/main/About";
 
 export default function Home() {
     return (
@@ -15,7 +14,10 @@ export default function Home() {
             <div className="relative z-10">
                 <Header/>
                 <Hero/>
-                <About/>
+                <section id="about" className="h-[2000px] bg-amber-600 w-screen"/>
+                <section id="skills" className="h-[2000px] bg-blue-600 w-screen"/>
+                <section id="projects" className="h-[2000px] bg-red-600 w-screen"/>
+                <section id="contact" className="h-[2000px] bg-purple-600 w-screen"/>
             </div>
 
         </div>
