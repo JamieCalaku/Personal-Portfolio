@@ -13,7 +13,7 @@ export default function Home() {
             {/* Content */}
             <div className="relative z-10">
                 <Header/>
-                <Hero/>
+                <section id="home"><Hero/></section>
                 <section id="about" className="h-[2000px] bg-amber-600 w-screen"/>
                 <section id="skills" className="h-[2000px] bg-blue-600 w-screen"/>
                 <section id="projects" className="h-[2000px] bg-red-600 w-screen"/>

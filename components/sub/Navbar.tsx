@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
+import {smoothScrollTo} from "@/components/scroll/ScrollTo";
 
 type NavLink = { label: string; id: string };
 
@@ -21,12 +22,6 @@ const OBSERVER_OPTIONS: IntersectionObserverInit = {
 export default function Navbar() {
     const [activeId, setActiveId] = useState<string>("home");
 
-    const scrollTo = (id: string) =>
-        document.getElementById(id)?.scrollIntoView({
-            behavior: "smooth",
-            block: "start",
-        });
-
     useEffect(() => {
         const observer = new IntersectionObserver((entries) => {
             const visible = entries.filter(e => e.isIntersecting);
@@ -45,7 +40,7 @@ export default function Navbar() {
     }, []);
 
     return (
-        <nav className="inline-flex h-16 px-1 overflow-hidden bg-neutral-900 rounded-[100px] shadow-navbar-glow outline-1 outline-navbar-stroke no-select">
+        <nav className="inline-flex h-16 px-1 overflow-hidden bg-neutral-900 rounded-full shadow-navbar-glow border border-white/20 no-select">
             <div className="flex">
                 {LINKS.map(({ id, label }) => (
                     <NavItem
@@ -53,7 +48,7 @@ export default function Navbar() {
                         id={id}
                         label={label}
                         active={activeId === id}
-                        onClick={scrollTo}
+                        onClick={smoothScrollTo}
                     />
                 ))}
             </div>
@@ -78,11 +73,11 @@ function NavItem({ id, label, active, onClick }: NavItemProps) {
             }}
             className="flex items-center font-bold text-white text-[clamp(0.5rem,1.1rem,2rem)]"
         >
-      <span className="relative inline-flex items-center justify-center px-[clamp(0.8rem,1.6vw,10rem)] h-14">
+      <span className="relative inline-flex items-center px-[clamp(0.8rem,1.6vw,10rem)] h-14">
         {active && (
             <motion.span
                 layoutId="active-pill"
-                className="absolute inset-0 bg-stone-950 rounded-[100px]"
+                className="absolute inset-0 bg-stone-950 rounded-full"
                 transition={{ type: "spring", stiffness: 500, damping: 100 }}
             />
         )}
