@@ -3,7 +3,7 @@ import Hero from "@/components/main/Hero";
 
 export default function Home() {
     return (
-        <div className="relative min-h-screen bg-bg overflow-hidden">
+        <div className="relative bg-bg overflow-hidden">
 
             {/* Blurred Light */}
             <div className="pointer-events-none absolute -top-130 -left-180 z-100 opacity-40">

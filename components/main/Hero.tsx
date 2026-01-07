@@ -4,7 +4,6 @@ import Noise_Background from "@/components/sub/Noise_Background";
 export default function Hero() {
     return (
         <main className="flex w-screen h-screen">
-
             {/* Noise Background */}
             <div className="w-screen h-screen absolute z-0 opacity-10">
                 <Noise_Background

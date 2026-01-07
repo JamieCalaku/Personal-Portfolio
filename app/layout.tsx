@@ -1,7 +1,17 @@
-import {Metadata} from "next";
+import {Metadata, Viewport} from "next";
 import "./globals.css";
 import SEOJsonLd from "@/components/seo/SEOJsonLd";
 import SmoothScroll from "@/components/scroll/SmoothScroll";
+
+
+export const viewport: Viewport = {
+    width: "device-width",
+    initialScale: 1,
+    viewportFit: "cover",
+    themeColor: "#000000",
+    colorScheme: "dark",
+};
+
 
 const title = "Jamie Calaku | Fullstack Engineer";
 const description = "I’m a young full-stack developer from Darmstadt, Germany. I learn best by building, failing, fixing, and repeating the process. I’m curious about how things work under the hood and I enjoy turning vague ideas into real projects that I can actually be proud of.";
@@ -76,6 +86,7 @@ export const metadata: Metadata = {
     },
 };
 
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -83,18 +94,14 @@ export default function RootLayout({
 }>) {
   return (
       <html lang="en" translate={"no"}>
-        <SmoothScroll>
-          <body
-            className={`antialiased`}
-          >
+          <body className="">
+              <SmoothScroll>
+                  {children}
 
-            {children}
-
-            {/* SEOJsonLd */}
-            <SEOJsonLd/>
-
+                  {/* SEOJsonLd */}
+                  <SEOJsonLd/>
+              </SmoothScroll>
           </body>
-        </SmoothScroll>
     </html>
   );
 }
