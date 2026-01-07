@@ -28,13 +28,9 @@ html, body {
     --animate-status: status-ripple 3s infinite ease-out;
 }
 
-@keyframes status-ripple {
-    0% { opacity: 0.55; transform: scale(1); }
-    100% { opacity: 0; transform: scale(2.4); }
-}
+
 
 @layer components {
-
     .no-select {
         user-select: none;
         -webkit-user-select: none;
@@ -60,6 +56,10 @@ html, body {
     .status-dot::before { animation-delay: -1.15s; }
     .status-dot::after  { animation-delay: -2.3s; }
 
+    @keyframes status-ripple {
+        0% { opacity: 0.55; transform: scale(1); }
+        100% { opacity: 0; transform: scale(2.4); }
+    }
 }
 
 @layer base {
