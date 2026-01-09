@@ -5,7 +5,7 @@ export default function Hero() {
     return (
         <main className="flex w-screen h-screen">
             {/* Noise Background */}
-            <div className="w-screen h-screen absolute z-0 opacity-10">
+            <div className="w-screen h-screen absolute -z-100 opacity-30">
                 <Noise_Background
                     speed={4}
                     scale={0.7}
